@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN방식의 VUE</title>
+</head>
+      <div id="app"> 
+        <h3>나의 첫번째 vue 화면 </h3>
+        <h4>{{testData}}</h4>
+        <button @click="clickHandler">클릭할껄 ! </button>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  <!--중국계 미국인-->
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    testData:"나의 첫 vue데이터"
+                }
+            },
+            methods:{
+                clickHandler:function(){
+                    this.testData="우와 변경할까?";
+                    alert("클릭했지 ! ");
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+</html>
