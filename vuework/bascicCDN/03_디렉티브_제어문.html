@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브 제어문</title>
+    <script text="text/javascript" src="http://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>조건문 디렉티브</h2>
+        <h3>v-show : 조건에 따라 태그를 출력할 지 결정하는 디렉티브</h3>
+        <p>
+            v-shoew디렉티브의 속성값으로 boolean형을 설정한다.<br>
+            true : display block||inline-block<br>
+            false : display noew <br>
+        </p>
+        받는 급여 <input type="text" v-model.number="salary">
+        <p v-show="salary>=500">많이 받으시네요!</p>
+    </div>
+
+    <h4>비밀번호 확인</h4>
+    비밀번호 <input type="password"> <br>
+    비밀번호확인 <input type="password" v-model.number="password"><br>
+    <span v-show="">비밀번호가 일치하지 않습니다.</span>
+
+    <script>
+        const model={
+            salary:0,
+            password:0
+        }
+
+        Vue.createApp({
+            name:"controller",
+            data(){
+                return model;
+            }
+        }).mount("#app")
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script text="text/javascript" src="http://unpkg.com/vue"></script>
+
+    <style>
+        .mystyle{
+            background-color: magenta;
+            color:lime;
+        }
+        .myFont{
+            font-size:25px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>보간법/콧수염표기법</h2>    
+
+        <h3>vue에서 제공한 데이터 출력하기</h3>
+        <p>{{message}}</p>
+
+        <p> Html로 작성된 문구 출력 : {{htmlText}}</p>
+
+
+        <p> su : {{su}}  / {{su2}}</p>
+        <p>연산처리 : {{(su + su2) * 10 }}</p>
+
+
+        <h3>객체형 데이터 출력하기</h3>
+        <p>배열 : {{names}} / 단일값 : {{names[0]}}</p>
+        <p>객체 출력력 : {{obj}} / 단일값 : {{obj.price}}</p>
+
+        <h3>함수 호출하기</h3>
+        <p>문자열 길이 : {{message.substring(0,3)}}</p>
+        <p>배열의 길이 : {{names.length}}</p>
+        <p>함수호출 : {{testFunc()}}</p>
+
+        <h2>디렉티브를 이용하기.</h2>
+        <p>
+            화면을 구성할떄 ㄹ필요한 기능을 제공하는 문법 <br>
+            태그에 속성으로 설정, 속셩명 앞에 "v-" 붙인 속성들.<br>
+        </p>
+
+
+        <h3>v-text,v-html속성</h3>
+        <p>
+            vue에서 제공하는 데이터를 화면에 출력해주는 디렉티브 <br>
+            v-text :  innerText속성으로 데이터를 출력과 동일<br>
+            v-html :  innerHTML속성으로 데이터를 출력과 동일<br>
+        </p>
+
+        <p v-text="htmlText"></p>
+        <p v-html="htmlText"></p>
+        <p v-text="su"></p>
+        <h4>일반값 출력하기</h4>
+        <p v-text="'text'+su"></p>
+
+        <h3>v-pre속성</h3>
+        <p>
+            해석하지 않고 제외하는 디렉티브 -> 보간법을 ...
+        </p>
+
+        <p>{{htmlText}} / {{message}}</p>
+        <p v-pre>{{htmlText}} {{message}}</p>
+        <p v-pre v-html="htmlText"></p>
+        <p v-pre>이건 어떻게 되니?</p>
+
+
+        <h3>v-bind</h3>
+        <p>
+            html기본 속성을 연결하는 디렉티브를<br>
+            model(data)에서 제공하는 값으로 석승을 설정할떄 사용<br>
+            v-bind:속성명="" <br>
+            :속성명="" <br>
+        </p>
+        <img src="data:image/jpeg;base64,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" width="200px"> -->
+        <img v-bind:src="imgSrc" v-bind:width="imgWidth">
+        <img :src="imgSrc" :width="imgWidth">
+
+        <h4>v-bind로 속성 한번에 지정하기</h4>
+        <input v-bind="myinputRadio" value="M">남
+        <input v-bind="myinputRadio" value="F">여
+
+       
+
+        <div class="mystyle">직접설정</div>
+        <div class="mystyle myFont">직접설정</div>  <!-- 이것도 가능. 밑에 추가해서,-->
+        <div :class="mystyle">바인더 클래스 속성 적용용</div>
+
+        <h4>다중 속성값 처리하기.</h4>
+        <div :class="[mystyle,myfont]">두개 속성값 적용하기</div> <!-- 밑에 추가해서 가능-->
+
+
+        <h3>v-on</h3>
+        <p>
+            태그에 이벤트를 설정하는 것.<br>
+            v-on:이벤트명 으로 적용<br>
+            @이벤트명 으로 설정이 가능 <br>
+            속성값으로 함수(이벤트핸들러)를 설정<br>
+            vue인스턴스의 methods 속성으로 제공되는 함수를 설정<br>
+        </p>
+        <button v-on:click="basicEvent">v-on으로 이벤트설정</button>
+
+        <button @dblclick="basicEvent">더블클릭해봐 !</button>
+
+        <h3> 이벤트 핸들러 직접설정하기 </h3>
+        <input type="text" v-on:change="e=>{console.log(e);console.log(this);}"> <br>
+
+
+        <h4>로직만 선엉했을때 이벤트 객체 접근하기</h4>
+        <p>$event예약어를 이용해서 접근하기</p>
+        <input type="text" @keyup="console.log($event);console.log($event.target.value);this.message=$event.target.value"> <!-- 위 메세지에 변수에에 반영함.-->
+        <p>message : {{message}}</p>
+
+        <h3>이벤트속성에 수식어 이용하기</h3>
+        <p>
+            space 누르면 이벤트 발생
+            <input type="text" @keyup.space="(e)=>{console.log('space눌러실행');}"> <br>
+            <input type="text" @keyup.enter="(e)=>{console.log('enter눌러실행');}"> <br>
+        </p>
+
+        <p>
+            <a href="/test" @click.prevent="(e)=>{console.log('이동');}">a태그 이용 </a>
+        </p>
+
+        <p>
+            <button @click.right.prevent="e=>{console.log('우클릭 금지')}">기본 팝업 이벤트 막기</button>
+            <button @click.meta="console.log('키 누르고 클릭릭');">command/win 누르고 클릭릭</button>
+        </p>
+
+
+        <h2>v-model</h2>
+        <p>
+            데이터와 연동할때 사용하는 디렉티브
+            input태그의 입력값 데이터를 연결할때 사용용
+        </p>
+
+        <h3>type=text 값과 연동하기</h3>
+        <input type="text" v-model="inputData">
+        <h4>{{inputData}}</h4> 
+
+        <h3>type=checkbox값과 연동하기기</h3>
+        <p>
+            checkbox에 value속성을 설정하지 않으면 연동된 데이터에 boolean값을 저장<br>
+            value속성을 설정하면 value값을 저장함<br>
+            checkbox가 다중으로 설정이 되면 연동된 데이터에 check된 태그의 value값이 배열로 저장, 연결되는 데이터 타입을 배열로 설정
+        </p>
+
+        <input type="checkbox" name="basicCheck" v-model="basicCheck">
+        <h4>basicCheck : {{ basicCheck }} </h4> <br>
+
+
+        <p>value값을 선언한 checkbox</p>
+        <input type="checkbox" name="basicCheck2" v-model="basicCheck2" value="체크값"> 값 설정 
+        <h4>basicCheck2 : {{basicCheck2}}</h4>
+
+
+        <div>
+            <h3>다중 checkbox를 데이터와 연결</h3>
+            <input type="checkbox" v-model="hobby" value="운동" id="hobby1"><label fpr="hobby1">운동</label>
+            <input type="checkbox" v-model="hobby" value="독서" id="hobby2"><label fpr="hobby2">독서</label>
+            <input type="checkbox" v-model="hobby" value="음악" id="hobby3"><label fpr="hobby3">음악</label>
+            <input type="checkbox" v-model="hobby" value="영화" id="hobby4"><label fpr="hobby4">영화</label>
+            <input type="checkbox" v-model="hobby" value="댄스" id="hobby5"><label fpr="hobby5">댄스</label>
+
+            <div>
+                <h4>선택취미</h4>
+                <p>{{hobby.join(",")}}</p>
+                <!-- <ul>
+                    <li v-for="(v,i)" in hobby">{{v}}</li>
+                </ul> -->
+            </div>
+
+            <h3>select 태그 데이터 연결하기</h3>
+            <div>
+                <h3>카테고리 선택</h3>
+                <select name="category" id="category" v-model="category">
+                    <option disabled value="">선택하세요</option>
+                    <option value="제목">제목</option>
+                    <option value="내용">내용</option>
+                    <option value="작성자">작성자</option>
+                </select>
+                <h4 v-text="category"></h4>
+            </div>
+
+            <h4>textarea이용하기</h4>
+            <textarea id="info" v-model="info"></textarea>
+            <h4>{{info}}</h4>
+
+
+        </div>
+        
+            
+        <h3>객체속성으로 v-model연동하기</h3>
+    <div>
+        <input type="text" v-model="img.src"> <br>
+        <input type="text" v-model="img.width"> <br>
+        <img :src="img.src" :width="img.width">
+    </div>
+
+
+
+    <h3>v-model 수식어 사용하기</h3>
+    <h4>lazy수식어 이용하기</h4>
+    <div>
+        <input type="text" v-model.lazy="name">
+        <p>사용자 입력값 : {{name}} </p>
+    </div>
+    <h4>number수식어</h4>
+    <div>
+        <input type="text" v-model="su">
+        <input type="text" v-model.number="su"> <!-- 숫자열로 바꾸고 싶을때-->
+        <p> {{su+200}} </p>
+    </div>
+
+    <h4>trim </h4>
+    <div>
+        <input type="text" v-model="message">
+        <input type="text" v-model.trim="message">
+        <p v-text="message"></p>
+    </div>
+
+
+
+
+    </div>
+    <script>
+        //vue 인스턴스
+        Vue.createApp({
+            name:"App", // 컨포넌트 명이랑 매칭이됨.
+        
+            methods:{
+                basicEvent:function(e){
+                    console.log(e); // 이벤트 객체가 전달달
+                    e.target.innerText="우와 변경";
+                }
+                
+            },
+            data() {   // << 인스턴스를 이용해서 데이터로 메세지를 이용할 수 있다. 저장공간확보의 개념.
+                return {
+                    message:"",
+                    htmlText:"<mark>우와 신기하다.</mark>",
+                    su:10,
+                    su2:20,
+                    names:["유병승","홍길동","이순신"],
+                    obj:{name:"노트북",price:100},
+                    testFunc:function(){return "model제공함수";},
+                    imgSrc:"https://www.chunjae.co.kr/webdata/_cj/www/meta/chunjae_logo.png",
+                    imgWidth:"300px",
+                    myinputRadio:{"type":"radio","id":"gender","name":"gender",class:"myinput"},
+                    mystyle:"mystyle",
+                    myfont:"myFont",
+                    inputData:"이제 곧 점심시간",
+                    basicCheck:true,
+                    basicCheck2:false,
+                    hobby:[],
+                    category:"",
+                    info:"",
+                    img:{src:"",width:""},
+                    name:"",
+                    }
+                }
+        }).mount("#app");
+    </script>
+
+</body>
+</html>
