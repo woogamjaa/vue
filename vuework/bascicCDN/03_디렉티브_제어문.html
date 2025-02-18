@@ -143,7 +143,7 @@
         <p>
             v-bind 속성연결
         </p>
-        <img :[img.src]="img.path" :[img.attrWidth]="img.width"/><br>
+        <img :[img.src]="img.path" :[img.widthdata]="img.width"/><br>
         <img v-bind="allAttr"/><br>
 
         <h3> 한글처리 </h3>
@@ -156,7 +156,7 @@
         <h3>v-cloack : 콧수염 연산자 사용시 랜더링 까지 표현식이 출력되는 것을 방히나느 디렉티브</h3>
         <p>
             속성으로 설정하고 스타일 태그에서 안보이게 설정 -> display:none <br>
-            [v-cloak]{display:none}
+            [v-cloak]
         </p>
     </div>
 
@@ -174,7 +174,7 @@
             data(){
                 return{
                     oneData:"이제 두시간 남았다",
-                    img:{src:"src",path:"https://cdn.imweb.me/upload/S2021020157e780b7b1452/d441f211a0391.jpg",attrWidth:"width", width:"100px"},
+                    img:{src:"src",path:"https://cdn.imweb.me/upload/S2021020157e780b7b1452/d441f211a0391.jpg",widthdata:"width", width:"200px"},
                     allAttr:{src:"https://cdn.imweb.me/upload/S2021020157e780b7b1452/d441f211a0391.jpg",width:"100px",alt:"천재교육로고"}
                 }
             }
