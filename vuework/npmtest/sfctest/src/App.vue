@@ -1,47 +1,40 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <!-- 화면에 출력될 내용 -> html탴그, 콧수염표기법, 디렉티브 등
+        template에 작성된 태그는 div태그 내부에 작성을 해야 한다. 
+    -->
+    <div>
+        <h3>나의 첫 화면</h3>
+        <p>나의 첫 vue 컴포넌트</p>
+        <h2>전역 컴포넌트 사용하기</h2>
+        <BasicComponent></BasicComponent>
+        <h2>지역 컴포넌트 사용하기</h2>
+        <BasicComponent2></BasicComponent2>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+        <H2>인스턴스이용하기</H2>
+        <DataMehodUseComponent></DataMehodUseComponent>
     </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script>
+//  vue 인스턴스를 이용하는 기능을 작성된
+// options API , composition API 방식으로 작성할 수 있음.
+// 컴포넌트 불러오기 -> impoet 컴포넌트명()
+import BasicComponent2 from './components/01_생성_이용/02_BasicComponent2.vue';
+import DataMehodUseComponent from './components/02_인스턴스활용/DataMehodUseComponent.vue';
+
+
+export default{
+    //createApp() 함수에 설정했던 내용을 설정
+    //name,data,methods,watch,computed,라이프사이클 ...+ props, inject, provide, emit
+    name:"App",
+    
+    //불러온 컴포넌트 등록하기
+    //components속성을 이용해서 등록(객체)처리함
+    components:{BasicComponent2,DataMehodUseComponent}
+
 }
+</script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+<style>
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
