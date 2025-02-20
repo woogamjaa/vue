@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타일적용하기</title>
+    <script text="text/javascript" src="http://unpkg.com/vue"></script>
+    <style>
+        .test1{background-color: aqua; color:violet}
+        .test1{font-size: 20px; font-weight: bolder;}
+        .color{color:blue}
+        .background{background-color: yellow;}
+    </style>
+  
+</head>
+<body> 
+    <div id="app">
+        <h2>인라인스타일 적용하기</h2>
+        <p>
+            v-bind:style, :style속성을 이용해서 적용<br>
+            문자열로 설정하거나, 객체({css속성:속성값,color:red})로 설정할 수 있음
+            style태그는 mount된 태그 내부에 사용할 수 없다. <br>
+        </p>
+
+        <h3>문자열로 스타일 적용하기</h3>
+        <div v-bind:style="`border:1px solid red;color:magenta;width50%;height:100px`"> 
+            문자열로 스타일 적용하기
+        </div>
+
+        <h3>객체로 스타일 적용하기</h3>
+        <div v-bind:style='{
+            "border":"1px solid red","color":"magenta","width":"50%","height":"100px"}'> 
+            객체로 스타일 적용하기
+        </div>
+
+        <h3>model데이터와 연동해서 스타일 적용하기.</h3>
+        <input type="text" v-model.trim="style.container.width">
+        <div :style="style.container"></div>
+        
+        <h3>클래스속성으로 스타일 적용하기</h3>
+        <h4 class="test1 test2">클래스 스타일적용</h4>
+        <h4 :class="style.classes.a">클래스를 이용해서 동적으로 적용하기.</h4>
+        <h4 :class="style.classes.b">클래스를 이용해서 동적으로 적용하기.</h4>
+        <h4 :class="[style.classes.b,style.classes.a]">클래스를 이용해서 동적으로 적용하기.</h4> <!--두개 다 적용.-->
+        
+        <h4>클래스명을 key로 설정하고 boolean(true,false)값으로 스타일 적용하기</h4>
+        <h4 :class="style.classes2">test1</h4>
+        <h4 :class="style.classes2">test2</h4>
+
+        <h4>checkbox와 연동해서 스타일 적용하기</h4>
+        <label><input type="checkbox" v-model="style.check.color">글자색변경</label>
+        <label><input type="checkbox" v-model="style.check.background">배경색변경</label>
+        <h2 :class="style.check">나를 변경해봐~</h2>
+
+       
+    </div>
+
+    <script>
+        const model={
+            style:{
+                container:{
+                    width:"50%",
+                    height:"100px",
+                    border:"5px solid magenta"
+                },
+                classes:{
+                    a:"test1",
+                    b:"test2",
+                    c:"color",
+                    d:"background",
+                },classes2:{
+                    test1:true,
+                    test2:false,
+                },
+                check:{
+                    color:false,
+                    background:false,
+                }
+            }
+        }
+
+        Vue.createApp({
+            name:"style",
+            data(){
+                return model;
+            }
+
+        }).mount("#app");
+    </script>
+</body>
+</html>

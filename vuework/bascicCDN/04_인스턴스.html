@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인스턴스</title>
+    <script text="text/javascript" src="http://unpkg.com/vue"></script>
+</head>
+<body>
+    <h2>vue인스턴스</h2>
+    <p>
+        vue객체가 제공하는 createApp()함수를 이용해서 생성한 객체를 말함.
+        createApp함수의 매개변수로 객체를 전달.<br>
+        페이지 구성에 필요한 정보를 설정
+        name 이름을 설정
+        methods : 페이지내부 사용할 기능
+        data : 페이지내부에서 사용할 데이터
+        computed : 게산된 값 data값을 계산해서 처리할때 캐싱처리해서 한번만 계산ㄹ해서 공유하는 기능
+        watch : 특정 data에서 설정된 값을 추적관리
+        lifecycle : 페이지가 구성되는 주기에 따라 특정 로직을 수행할 수 있게 해주는 함수 들 (props, components, provide, inject)
+
+        name, methods, data, computed, watch, lifecycle 함수 들 등...
+    </p>
+
+    <script>
+       const vue = Vue.createApp();
+       console.log(vue);
+       console.log(vue.config);
+       console.log(vue._component);
+       console.log(vue.directive);
+    </script>
+
+    <div id="app">
+        <h2>methods속성 이용하기</h2>
+        <p>
+            vue페이지에서 사용할 함수를 지정하는 속성<br>
+            일반함수, 이벤트핸들러 설정<br>
+            함수를 선언할때는 function예약어를 이용해서 선언(전통적인 방식)<br>
+            화살표함수를 사용하지말것. -> this객체 문제가 발생 <br>
+            methods에 선언된 함수에서 data값을 가져오려면 this 예약어를 반드시 사용해야함
+            화살표함수에서는 this 객체는 window를 저장하고 있음. data를 가져올 수 없다
+        </p>
+        <h3>{{ count }}</h3>
+        <button @click="increment">증가</button>
+        <h4>계산된 값 : {{ countCalc() }} </h4>
+    </div>
+    <script>
+        const vue2=Vue.createApp({
+            name:"test",
+            data:function(){
+                return{
+                    count:0,
+                }
+            },
+            methods:{
+                countCalc:function(){
+                    return this.count*100;
+                },
+                increment:function(){
+                    if(this.count<20){
+                        this.count++;
+                    
+                    }else{
+                        alert('20이상 클릭할 수 없습니다.' + this.countCalc());
+                    }
+                    
+                }
+            }
+        });
+        vue2.mount("#app");
+    </script>
+
+    <div id="app1">
+        <h2>computed 속성 이용하기</h2>
+        <p>
+            특정값을 반환하는 함수들을 설정하는 속성<br>
+            함수의 반환값을 캐싱하고 그 값을 화면에 출력하여 함수를 계속 호출하지 않는 기능
+        </p>
+
+        <div>
+            <p>{{ printStr() }}</p>
+            <p>{{ printStr() }}</p>
+            <p>{{ printStr() }}</p>
+        </div>
+        <h3>computed함수로 값을 출력하기</h3>
+        <div>
+      
+            <p>{{ printComputed }}</p>
+            <p>{{ printComputed }}</p>
+            <p>{{ printComputed }}</p>
+        </div>
+        <h3>계산해서 처리하기</h3>
+        <div>
+            <input type="text" v-model.nunmber="num">
+            <p>1부터 입력한 값까지 출력 : <span>{{sum}}</span></p>
+            <p>1부터 입력한 값까지 출력 : <span>{{sum}}</span></p>
+            <p>1부터 입력한 값까지 출력 : <span>{{sum}}</span></p>
+            <p>1부터 입력한 값까지 출력 : <span>{{sum}}</span></p>
+        </div>
+    </div>
+
+    <script>
+        Vue.createApp({
+            name:"test2",
+            data(){
+                return{
+                    num:0
+                }
+            },
+            methods:{
+                printStr(){
+                    console.log("printStr실행");
+                    return "일반함수 실행";
+                }
+            },
+            computed:{
+                printComputed(){
+                    console.log("실행")
+                    return "compout 실행."
+                },
+                sum(){
+                    console.log("sum() 함수 실행.")
+                    let total=0;
+                    for(let i=0;i<this.num;i++){
+                        total+=(i+1);
+                    }
+                    return total;
+                }
+            }
+        }).mount("#app1")
+    </script>
+
+    <div id="app2">
+        <h3>watch속성 : 연결 데이터가 변경됨을 감지하고 특정로직을 실행할때 사용</h3>
+        <p>
+            연결된 데이터의 key와 함수명이 동일해야함.
+            설정되는 함수는 매개변수로 현재값, 이전값을 받는다.
+            function(curVal,preVal) {}
+        </p>
+        <h3>기본 watch적용하기 - 단일값</h3>
+        <p>{{ watchData }}</p>
+        <input type="text" v-model.trim="watchData">
+
+        <h3>객체데이터 적용하기</h3>
+        <p>
+            객체 내부의 속성값을 수정하면 watch가 기본적으로 실행되지 않음<br>
+            deep속성을 설정하면 내부속성을 수정했을때도 실행이 가능해짐<br>
+        </p>
+
+        이름 <input type="text" v-model="person.name">
+        나이 <input type="text" v-model="person.age">
+        성별 <input type="text" v-model="person.gender">
+        <!-- <button @click="person={name:`test`,age:10,gender:`남`}">변경</button> -->
+        <button @click="makePerson">변경</button>
+        <p>{{ person.name }} {{ person.age }} {{ person.gender }}</p>
+
+    </div>
+    <script>
+        Vue.createApp({
+            name:"test3",
+            data:function(){
+                return{
+                    watchData:"",
+                    person:{
+                        name:"",age:"",gender:""
+                    }
+                }
+            },
+            methods:{
+                makePerson(){
+                   console.log("test");
+                   this.person={name:`test`,age:10,gender:`남`};
+                }
+            },
+            watch:{
+                watchData:function(curval,preval){
+                    console.log(`현재 ${curval}`)
+                    console.log(`이전 ${preval}`)
+                },
+                // person:function(c,p){
+                //     console.log(`현재 : ${c}`);
+                //     console.log(`이전 : ${p}`);
+                // }  
+                person:{
+                    //실핼될 로직을 설정하는 속성
+                    handler:(function(num=0) {
+                           return function(c,p) {
+                                console.log(num++);    
+                                console.log(c)
+                                console.log(p)
+                           };
+                    })(),
+                    //객체의 내부속성이 변경됐을때 실행여부를 설정
+                    deep:true //실행
+                }
+            }
+        }).mount("#app2");
+    </script>
+
+    <h3>생명주기함수</h3>
+    <!-- 페이지 마운트 후 뜨자마자 데이터 요청 , 페치 로딩 등. -->
+    <p>
+        beforeCreate, created, beforeUpdate(바뀌기전에), updated(바뀐후에), 
+        beforMount, mounted, beforeUnmount, numounted
+    </p>
+
+    <div id="app3">
+        <h3>생명주기함수</h3>
+        <input type="text" v-model="test">
+        <p>{{test}}</p>
+    </div>
+    <script>
+         const vue3 = Vue.createApp({
+            data(){
+                return {test:"test"};
+            },
+            methods: {
+                testFunc(){
+                    console.log("test함수 실행")
+                }
+            },
+            beforeCreate:function(){
+                //잘사용 안함함
+                console.log("beforeCreate함수 실행")
+                console.log(this);
+                console.log(this.test);
+                
+            },
+            create:function(){
+                console.log("create함수실행");
+                console.log(this);
+                console.log(this.test);
+                this.testFunc();
+            },
+            beforeMount:function(){
+                console.log("beforeMount함수실행.");
+            },
+            mounted:function(){
+                console.log("mounted함수실행")
+            },
+            beforeUpdate:function(){
+                console.log("beforeUpdate함수 실행")
+                //data에 있는 값이 수정됐을 때 수정전 실행 됨.
+                console.log(this.test);
+            },
+            updated:function(){
+                console.log("updated함수 실행");
+                console.log(this.test);
+                
+            },
+        }).mount("#app3");
+    </script>
+
+    <div id="app4">
+        <h2>뉴스데이터 가져와 출력하기</h2>
+        <div id="newsContainer">
+            <button @click="getNews()">뉴스가져오기</button>
+            <!-- <input type="text" v-model.trim="keyword"> -->
+             <input type="text" @input="keyword=$event.target.value">
+       
+            <ul>
+                <li v-for="(n,index) in newsData.news.articles" :key="index">
+                    <img :src="[n.urlToImage]" alt="기사사진" width="100px">
+                    <!-- <a :href="[n.url]">{{n.title}}</a>  -->
+                    <a :href="[n.url]" @click.prevent="openPage(n.url)">{{n.title}}</a> 
+                </li>
+            </ul>
+        </div>
+        <div v-show="newsData.isLoading">로딩중.....</div>
+    </div>
+    <script>
+        const model={
+            keyword:"",
+            newsData:{isLoading:false,news:[]},
+            imgstyle:{width:"200px", alt:"기사사진", height:"200px"},
+            debouncer:""
+        }
+        Vue.createApp({
+            name:"newscontainer",
+            data(){
+                return model
+            },
+            methods:{
+                openPage(url){
+                    open(url,"_blank","width=400,height=500");
+                },
+                getNews(cate){
+                    const query=cate?`&category=${cate}`:'';
+                    fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=44cc80dff8f94ae9a7bfa042aef62c58${query}`)
+                    .then(response=>response.json())
+                    .then(newdata=>{
+                        this.newsData.news=newdata;
+                        this.newsData.isLoading=false;
+                        console.log(this.newsData.news); 
+                    });
+                },
+                
+            },
+            mounted:function(){
+                this.newsData.isLoading=true; 
+                this.getNews(); //얘내들이 ajax 방식으로 호출하기때문에 서버랑 뭔가 가져올때는 로딩화면, 동작화면을 알려줘야함. 
+            },
+            watch:{
+                keyword(curval,preVal){
+                    console.log(curval);
+                    this.newsData.isLoading=true;
+                    //all , business, entertainment, health, sports
+                    const category={
+                        "all":"전체",
+                        "business":"경제",
+                        "entertainment":"연예",
+                        "health":"건강",
+                        "sports":"스포츠",
+                        "technology":"기술"
+                    };
+                    if(this.debouncer) clearTimeout(this.debouncer);
+
+                    if(Object.values(category).includes(curval)) {
+                        const key=Object.keys(category).find(k=>category[k]===curval);
+                        this.debouncer=setTimeout(()=>this.getNews(key),900);
+                    }else{
+                        this.debouncer=setTimeout(()=>this.getNews(),900);
+                    }
+                }
+            }
+        }).mount("#app4")
+    </script>
+</body>
+</html>
