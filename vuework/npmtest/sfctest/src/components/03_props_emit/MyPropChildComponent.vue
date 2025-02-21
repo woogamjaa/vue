@@ -3,7 +3,7 @@
         <h4>objDataList 출력하기</h4>
             <table>
                 <thead>
-                    <th v-for="(v,k) in objDataList[0]"> {{k}}</th>
+                    <th v-for="(v,k) in objDataList[0]" :key="k"> {{k}}</th> 
                 </thead>
                 <tbody>
                     <tr v-for="(v,k) in objDataList">

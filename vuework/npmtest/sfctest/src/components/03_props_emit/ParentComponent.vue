@@ -16,6 +16,7 @@
 
 
         <MyPropChildComponent v-bind:objDataList="objDataList"/>
+        
     </div>
 </template>
 <script>
