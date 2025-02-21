@@ -8,10 +8,13 @@
         <h2>전역 컴포넌트 사용하기</h2>
         <BasicComponent/>
         <h2>지역 컴포넌트 사용하기</h2>
-        <BasicComponent2></BasicComponent2>
+        <BasicComponent2/>
 
         <h2>인스턴스이용하기</h2>
-        <DataMehodUseComponent></DataMehodUseComponent>
+        <DataMehodUseComponent/>
+
+        <h2>props활용하기</h2>
+        <ParentComponent/>
     </div>
 </template>
 
@@ -21,6 +24,7 @@
 // 컴포넌트 불러오기 -> impoet 컴포넌트명()
 import BasicComponent2 from './components/01_생성_이용/02_BasicComponent2.vue';
 import DataMehodUseComponent from './components/02_인스턴스활용/DataMehodUseComponent.vue';
+import ParentComponent from './components/03_props_emit/ParentComponent.vue';
 
 
 export default{
@@ -30,7 +34,7 @@ export default{
     
     //불러온 컴포넌트 등록하기
     //components속성을 이용해서 등록(객체)처리함
-    components:{BasicComponent2,DataMehodUseComponent}
+    components:{BasicComponent2,DataMehodUseComponent,ParentComponent}
 
 }
 </script>
