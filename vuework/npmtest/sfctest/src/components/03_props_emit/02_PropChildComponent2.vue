@@ -2,7 +2,7 @@
     <div>
         <h3>부모가 전달한 model 데이터 가져오기</h3>
         <div>
-            <p >mydata : {{title}}</p>
+            <p>mydata : {{title}}</p>
             <p>mycontent : {{content}}</p>
             <p>number : {{su}}</p>
 
