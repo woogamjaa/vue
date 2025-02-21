@@ -6,11 +6,11 @@
         <h3>나의 첫 화면</h3>
         <p>나의 첫 vue 컴포넌트</p>
         <h2>전역 컴포넌트 사용하기</h2>
-        <BasicComponent></BasicComponent>
+        <BasicComponent/>
         <h2>지역 컴포넌트 사용하기</h2>
         <BasicComponent2></BasicComponent2>
 
-        <H2>인스턴스이용하기</H2>
+        <h2>인스턴스이용하기</h2>
         <DataMehodUseComponent></DataMehodUseComponent>
     </div>
 </template>
