@@ -15,6 +15,13 @@
 
         <h2>props활용하기</h2>
         <ParentComponent/>
+
+
+        <h2>자식컴포넌트가 부모컴포넌트에 데이터 전달</h2>
+        <ChildToParent/>
+
+
+
     </div>
 </template>
 
@@ -26,6 +33,7 @@ import BasicComponent2 from './components/01_생성_이용/02_BasicComponent2.vu
 import DataMehodUseComponent from './components/02_인스턴스활용/DataMehodUseComponent.vue';
 import ParentComponent from './components/03_props_emit/ParentComponent.vue';
 import ParentComponent2 from './components/03_props_emit/ParentComponent.vue';
+import ChildToParent from './components/04_emitter 이용/ChildToParentContainer.vue';
 
 export default{
     //createApp() 함수에 설정했던 내용을 설정
@@ -34,7 +42,7 @@ export default{
     
     //불러온 컴포넌트 등록하기
     //components속성을 이용해서 등록(객체)처리함
-    components:{BasicComponent2,DataMehodUseComponent,ParentComponent}
+    components:{BasicComponent2,DataMehodUseComponent,ParentComponent,ChildToParent}
 
 }
 </script>
