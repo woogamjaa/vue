@@ -25,7 +25,7 @@
 import BasicComponent2 from './components/01_생성_이용/02_BasicComponent2.vue';
 import DataMehodUseComponent from './components/02_인스턴스활용/DataMehodUseComponent.vue';
 import ParentComponent from './components/03_props_emit/ParentComponent.vue';
-
+import ParentComponent2 from './components/03_props_emit/ParentComponent.vue';
 
 export default{
     //createApp() 함수에 설정했던 내용을 설정
