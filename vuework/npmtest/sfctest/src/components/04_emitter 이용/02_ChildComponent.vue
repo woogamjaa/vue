@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h3>자식컴포넌트</h3>
         <p>
             자식컴포넌트에서 $emit() 함수를 이용해서 부모컴포넌트에 데이터를 전송할 수 있다 <br>
@@ -11,6 +11,10 @@
         <h4>input태그에 입력된 값 전달하기</h4>
         <input type="text" @input="$emit('basicEvent',$event.target.value)">
 
+        <h4>input태그에서 발생한 이벤트 전달하기</h4>
+        <button @click="$emit('eventObjEvent',$event)">전달~</button>
+        
+
     </div>
 </template>
 <script>
@@ -18,6 +22,9 @@ export default {
     name:"ChildComponent",
 }
 </script>
-<style>
-    
+<style scoped>
+    .container{
+        border:1px solid magenta;
+    }
+
 </style>
