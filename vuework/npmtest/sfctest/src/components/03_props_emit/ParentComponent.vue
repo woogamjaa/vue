@@ -13,11 +13,15 @@
 
         <PropChildComponet2 v-bind:title="mydata" :content="mycontent" :su="number" 
         :arrData="subjectList" :objData="objData"/>
+
+
+        <MyPropChildComponent v-bind:objDataList="objDataList"/>
     </div>
 </template>
 <script>
 import PropChildComponet from './01_PropChildComponent.vue';
 import PropChildComponet2 from './02_PropChildComponent2.vue';
+import MyPropChildComponent from './MyPropChildComponent.vue';
 
 const model={
     mydata:"제목입니다.",
@@ -25,10 +29,17 @@ const model={
     number:200,
     subjectList:["html","css","javascript","jquery","vue"],
     objData:{no:1,title:"첫번째 제목",content:"첫번째 내용",date:new Date()},
+    //MyPropChildComponent를 만들어서 아래 데이터로 테이블을 완성하기
+    objDataList:[
+        {no:1,title:"첫번째 제목",content:"첫번째 내용",date:new Date()},
+        {no:2,title:"두번째 제목",content:"두번째 내용",date:new Date()},
+        {no:3,title:"세번째 제목",content:"세번째 내용",date:new Date()},
+        {no:4,title:"네번째 제목",content:"네번째 내용",date:new Date()}
+    ]
 }
 export default {
     name:"propcontainer",
-    components:{PropChildComponet,PropChildComponet2},
+    components:{PropChildComponet,PropChildComponet2,MyPropChildComponent},
     data(){
         return model;
     }

@@ -15,6 +15,15 @@
                 <li v-for="subject in arrData" :key="subject">{{subject}}</li>
             </ul>
 
+            <h4>객체 데이터 처리하기</h4>
+            <table>
+                <thead>
+                    <th v-for="(v,k) in objdata"> {{k}}</th>
+                </thead>
+                <tbody>
+                    <td v-for="(v,k) in objdata"> {{v}}</td>
+                </tbody>
+            </table>
 
         </div>
     </div>
