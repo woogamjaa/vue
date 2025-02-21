@@ -5,6 +5,16 @@
             <p>mydata : {{title}}</p>
             <p>mycontent : {{content}}</p>
             <p>number : {{su}}</p>
+            
+            <h4>객체 데이터</h4>
+            <p>arrData : {{arrData}}</p>
+            <p>objData : {{objData}}</p>
+
+            <h4>배열데이터 처리하기</h4>
+            <ul>
+                <li v-for="subject in arrData" :key="subject">{{subject}}</li>
+            </ul>
+
 
         </div>
     </div>
@@ -12,7 +22,7 @@
 <script>
 export default {
     name:"propsChildComponent2",
-    props:["title","content","su"]
+    props:["title","content","su","arrData","objData"]
 }
 </script>
 <style>

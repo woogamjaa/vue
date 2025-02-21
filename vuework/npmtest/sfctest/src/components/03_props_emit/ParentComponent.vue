@@ -11,8 +11,8 @@
             전달하는 데이터의 타입은 모두 가능 ( 기본, 객체, 배열 등)
         </p>
 
-        <PropChildComponet2 v-bind:title="mydata" :content="mycontent" :su="number"/>
-
+        <PropChildComponet2 v-bind:title="mydata" :content="mycontent" :su="number" 
+        :arrData="subjectList" :objData="objData"/>
     </div>
 </template>
 <script>
@@ -23,6 +23,8 @@ const model={
     mydata:"제목입니다.",
     mycontent:"내용을 처리",
     number:200,
+    subjectList:["html","css","javascript","jquery","vue"],
+    objData:{no:1,title:"첫번째 제목",content:"첫번째 내용",date:new Date()},
 }
 export default {
     name:"propcontainer",
