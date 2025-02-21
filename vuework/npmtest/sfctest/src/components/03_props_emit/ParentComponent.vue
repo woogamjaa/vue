@@ -26,13 +26,21 @@
         내용<input type="text" v-model="board.content"><br>
         <button @click="addBoard">추가</button>
 
-
+        <h3>props데이터 유효성검사</h3>
+        <div>
+            <p>
+                자식 컴포넌트에서 전달되는 데이터(props)에 대한 추가설정<br>
+                타입, 필수값여부, 기본값을 설정<br>
+            </p>
+            <check number="안녕"/>
+        </div>
     </div>
 </template>
 <script>
 import PropChildComponet from './01_PropChildComponent.vue';
 import PropChildComponet2 from './02_PropChildComponent2.vue';
 import MyPropChildComponent from './MyPropChildComponent.vue';
+import check from './03_ChecKPropChildComponent.vue';
 
 const model={
     mydata:"제목입니다.",
@@ -51,7 +59,7 @@ const model={
 }
 export default {
     name:"propcontainer",
-    components:{PropChildComponet,PropChildComponet2,MyPropChildComponent},
+    components:{PropChildComponet,PropChildComponet2,MyPropChildComponent,check},
     data(){
         return model;
     },
