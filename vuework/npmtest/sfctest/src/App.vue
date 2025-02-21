@@ -20,6 +20,8 @@
         <h2>자식컴포넌트가 부모컴포넌트에 데이터 전달</h2>
         <ChildToParent/>
 
+        <h2>provide, inject이용하기</h2>
+        <ProvideParentComponent/>
 
 
     </div>
@@ -34,6 +36,7 @@ import DataMehodUseComponent from './components/02_인스턴스활용/DataMehodU
 import ParentComponent from './components/03_props_emit/ParentComponent.vue';
 import ParentComponent2 from './components/03_props_emit/ParentComponent.vue';
 import ChildToParent from './components/04_emitter 이용/ChildToParentContainer.vue';
+import ProvideParentComponent from './components/05_provide_inject/ProvideParentComponent.vue';
 
 export default{
     //createApp() 함수에 설정했던 내용을 설정
@@ -42,7 +45,7 @@ export default{
     
     //불러온 컴포넌트 등록하기
     //components속성을 이용해서 등록(객체)처리함
-    components:{BasicComponent2,DataMehodUseComponent,ParentComponent,ChildToParent}
+    components:{BasicComponent2,DataMehodUseComponent,ParentComponent,ChildToParent,ProvideParentComponent}
 
 }
 </script>

@@ -20,6 +20,14 @@
         <h4>model데이터와 연동한 값 전달하기</h4>
         <button @click="moduleDataSend">전달하기</button>
 
+        <div>
+            <input type="text" v-model="board.title">
+            <input type="text" v-model="board.content">
+            <button @click="addBoard">추가</button>
+
+        </div>
+
+
     </div>
 </template>
 <script>
@@ -44,8 +52,21 @@ export default {
             {no:sequenceNum.next().value,title:"네번째제목",content:"네번째 내용",date:new Date()},
             {no:sequenceNum.next().value,title:"다섯번째제목",content:"다섯번째 내용",date:new Date()},
         ],
+        board:{no:0, title:"",content:"",date:""},
         }
     },
+    methods:{
+        moduleDataSend:function(){
+            this.$emit("modelDataEvent",this.objArrData);
+        },
+        addBoard(){
+            this.objArrData.push({...this.board,
+                no:sequenceNum.next().value,
+                date:new Date()
+        });
+        this.$emit("modelDataEvent",this.objArrData);
+        }
+    }
 }
 </script>
 <style scoped>
