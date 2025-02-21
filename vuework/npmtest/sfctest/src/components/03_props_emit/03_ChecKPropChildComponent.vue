@@ -13,11 +13,14 @@ export default {
         "number":{
             type:Number, //경고를 띄워준다.
             require:true,
+            default:10,
+            validator:function(val){console.log(val); return val>300} // 기능을 정의하고 판단해서 출력시켜줌.
 
         },
         "title":{
             type:String,
             require:true,
+            default:"제목없음",  // 기본값.
         }
     } 
 }
