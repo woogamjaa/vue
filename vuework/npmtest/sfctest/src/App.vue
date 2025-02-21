@@ -36,6 +36,10 @@
                 <input type="text" v-model="link.path" palceholder="주소">
                 <button @click="addLink">추가</button>
             </div>
+
+
+        <h2> slot이용하기</h2>
+        <SlotContainer/>
     </div>
 </template>
 
@@ -52,6 +56,7 @@ import ProvideParentComponent from './components/05_provide_inject/ProvideParent
 import TableBody from './components/sample/TableBody.vue';
 import TableHeader from './components/sample/TableHeader.vue';
 import Navi from './components/sample/Nav.vue';
+import SlotContainer from './components/06_슬룻이용/SlotContainer.vue';
 
 export default{
     //createApp() 함수에 설정했던 내용을 설정
@@ -60,7 +65,7 @@ export default{
     
     //불러온 컴포넌트 등록하기
     //components속성을 이용해서 등록(객체)처리함
-    components:{BasicComponent2,DataMehodUseComponent,ParentComponent,ChildToParent,ProvideParentComponent,TableHeader,TableBody,Navi},
+    components:{BasicComponent2,DataMehodUseComponent,ParentComponent,ChildToParent,ProvideParentComponent,TableHeader,TableBody,Navi,SlotContainer},
     data(){
         return {
             links:[],
