@@ -4,10 +4,10 @@
         <p>number : {{number}} </p>
         <p>title : {{title}}</p>
 
-        <h3>부모가 전송한 props값 자식컴포넌트가 수정하기</h3>
-        <p>props 고정값 -> readonly값</p>
+        <h3>부모가 전송한 props값 자식컴포넌트가 수정할 수 없다.</h3>
+        <p>불가능 ! props 고정값 -> readonly값</p>
         <!-- <input type="text" v-model="number">  이건 불가능하다.-->  
-         
+
 
     </div>
 </template>
