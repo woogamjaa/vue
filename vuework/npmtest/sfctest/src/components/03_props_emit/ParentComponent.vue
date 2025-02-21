@@ -16,7 +16,17 @@
 
 
         <MyPropChildComponent v-bind:objDataList="objDataList"/>
-        
+
+        <h3>부모컴포넌트가 데이터를 수정하기</h3>
+        <p>
+            model로 연결된 props데이터를 수정하면 자식컴포넌트를 재 랜더링 한다.
+            -> 데이터가 수정된것으로 반영됨.
+        </p>
+        제목<input type="text" v-model="board.title"><br>
+        내용<input type="text" v-model="board.content"><br>
+        <button @click="addBoard">추가</button>
+
+
     </div>
 </template>
 <script>
@@ -36,13 +46,19 @@ const model={
         {no:2,title:"두번째 제목",content:"두번째 내용",date:new Date()},
         {no:3,title:"세번째 제목",content:"세번째 내용",date:new Date()},
         {no:4,title:"네번째 제목",content:"네번째 내용",date:new Date()}
-    ]
+    ],
+    board:{no:0,title:"",content:"",date:""}, //objDataList 넣을 배열.
 }
 export default {
     name:"propcontainer",
     components:{PropChildComponet,PropChildComponet2,MyPropChildComponent},
     data(){
         return model;
+    },
+    methods:{
+        addBoard(){
+            this.objDataList.push({...this.board, date:new Date()});
+        }
     }
 }
 </script>
