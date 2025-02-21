@@ -3,7 +3,7 @@
         <h3> 자식컴포넌트가 보낸 데이터를 가져오기</h3>
         <ChildComponent @basicEvent="inputHandler"
                         @eventObjEvent="eventObjHandler"
-                        @allDataEvent="allDataHanlder"/>
+                        @allDataEvent="allDataHanlder"/> <!--이벤트-->
     </div>
 </template>
 <script>

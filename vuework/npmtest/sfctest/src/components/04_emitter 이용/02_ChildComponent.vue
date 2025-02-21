@@ -17,11 +17,35 @@
         <h4>이벤트객체, 추가값을 전달하기(다수)</h4>
         <input type="text" @input="$emit('allDataEvent',$event,$event.target.value)"/>
 
+        <h4>model데이터와 연동한 값 전달하기</h4>
+        <button @click="moduleDataSend">전달하기</button>
+
     </div>
 </template>
 <script>
+//공통 제네레이터 사용. 뷰가 돌아갈때.
+// const geneatorNum=function* (title){
+//     let count=0;
+//     while(true){
+//         yield `${title}_${count++}`;
+//     }
+// }
+import {geneatorNum } from '@/resources/Dataresources.js';
+const sequenceNum=geneatorNum("board");
+
 export default {
     name:"ChildComponent",
+    data:function(){
+        return {
+            objArrData:[
+            {no:sequenceNum.next().value,title:"첫번째제목",content:"첫번째 내용",date:new Date()},
+            {no:sequenceNum.next().value,title:"두번째제목",content:"두번째 내용",date:new Date()},
+            {no:sequenceNum.next().value,title:"세번째제목",content:"세번째 내용",date:new Date()},
+            {no:sequenceNum.next().value,title:"네번째제목",content:"네번째 내용",date:new Date()},
+            {no:sequenceNum.next().value,title:"다섯번째제목",content:"다섯번째 내용",date:new Date()},
+        ],
+        }
+    },
 }
 </script>
 <style scoped>
