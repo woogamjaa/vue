@@ -13,7 +13,9 @@
 
         <h4>input태그에서 발생한 이벤트 전달하기</h4>
         <button @click="$emit('eventObjEvent',$event)">전달~</button>
-        
+
+        <h4>이벤트객체, 추가값을 전달하기(다수)</h4>
+        <input type="text" @input="$emit('allDataEvent',$event,$event.target.value)"/>
 
     </div>
 </template>
