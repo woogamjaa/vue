@@ -3,6 +3,12 @@
         <h3>props 값 유효성검사 </h3>
         <p>number : {{number}} </p>
         <p>title : {{title}}</p>
+
+        <h3>부모가 전송한 props값 자식컴포넌트가 수정하기</h3>
+        <p>props 고정값 -> readonly값</p>
+        <!-- <input type="text" v-model="number">  이건 불가능하다.-->  
+         
+
     </div>
 </template>
 <script>

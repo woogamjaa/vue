@@ -32,7 +32,7 @@
                 자식 컴포넌트에서 전달되는 데이터(props)에 대한 추가설정<br>
                 타입, 필수값여부, 기본값을 설정<br>
             </p>
-            <check number="number" title="제목있음"/>
+            <check :number="number" title="제목있음"/>
         </div>
     </div>
 </template>
