@@ -3,7 +3,7 @@
         <img :src="logo.src" alt="로고" :width="logo.width" :height="logo.height">
         <h2>{{title}}</h2>
         <div>
-            <InputMakeComponent :input="inputData" btntitle="로그인"/>
+            <InputMakeComponent :input="input" btntitle="로그인"/>
         </div>
     </div>
    
@@ -46,7 +46,6 @@ export default {
         align-items: center;
     }
     .header-container>img{
-        width:15%;
         border-radius: 50px;
     }
     .header-container>h2{
