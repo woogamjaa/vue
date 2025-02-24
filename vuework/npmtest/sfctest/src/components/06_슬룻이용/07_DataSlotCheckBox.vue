@@ -1,6 +1,6 @@
 <template>
     <div>
-        <CheckBoxList :items="items" >
+        <CheckBoxList :items="items" @checkchangedEvent="checkBoxChanged">
             <template v-slot:icon="p1">
                 <i v-if="p1.checked" class="far fa-grin-beam"></i>
                 <i v-else class="far fa-frown"></i>
@@ -20,8 +20,9 @@ export default {
     name:"dataSoltCheckbox",
     components:{CheckBoxList},
     methods:{
-        checkboxChange(e){
-            console.log(e)
+        checkBoxChanged(e){
+            let item=this.items.find(item=>item.id===e.id);
+            item.checked=e.checked;
         }
     },
     data(){
