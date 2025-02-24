@@ -54,6 +54,26 @@
 
         </LayoutComponent>
 
+            <h2>슬롯으로 데이터, 이벤트 이용하기</h2>
+            <p>
+                슬롯으로 자식컴포넌트와 부모컴포넌트가 데이터를 공유할 수 있음<br>
+                props방식을 이용<br>
+                자식컴포넌트에서 slot태그에 :속성명="값" 설정하면
+                부모컴포넌트에서 설정한 속성명의 데이터를 이용할 수 있다.<br>
+            </p>
+
+            <DataSlotComponent>
+                <template v-slot:test="test">
+                    <h4>{{ test.title }}</h4>
+                    <h5 v-if="test.show">{{ test.data }}</h5>
+                    <h5 v-else> 출력하지마아아</h5>
+                </template>
+                <template v-slot:test2="test2">
+                    <span>{{ test2.count }}</span> &nbsp;
+                    <h5 v-if="test2.count==10">10번 눌렀어요 ㅋㅋㅋ</h5>
+                </template>
+            </DataSlotComponent>
+
     </div>
 </template>
 <script>
@@ -65,9 +85,10 @@ import LayoutComponent from './05_LayoutConponent.vue'
 import HeaderComponent from './contentcompoent/HeaderComponent.vue';
 import Mylogo from '@/assets/몽몽몽.png';
 import AsideMenuComponent from './contentcompoent/AsideMenuComponent.vue';
+import DataSlotComponent from './06_DataSlotComponent.vue';
 export default {
     name:"slotcontainer",
-    components:{ChildSlotComponent,ChildSlotComponent2,InputComponent,NamedSlotComponent,LayoutComponent,HeaderComponent,AsideMenuComponent},
+    components:{ChildSlotComponent,ChildSlotComponent2,InputComponent,NamedSlotComponent,LayoutComponent,HeaderComponent,AsideMenuComponent,DataSlotComponent},
     data(){
         return{clickCount:0,
             checkData:"check컴포넌트",
