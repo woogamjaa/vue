@@ -1,11 +1,11 @@
 <template>
     <div class="input-container">
         <input v-for="v in input" :key="v.id" :type="v.type" :placeholder="v.placeholder" v-model="inputData[v.id]">
-        <button>{{ btntitle }}</button> 
+        <button @click="loginRequest">{{ btntitle }}</button> 
     </div>
 </template>
 <script>
-import { handleError } from 'vue';
+
 
 export default {
     mame:"inputMake",
