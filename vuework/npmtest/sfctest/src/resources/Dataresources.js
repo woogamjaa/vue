@@ -13,6 +13,15 @@ export const items=[
     {id:"JS",checked:true,label:"Javascript"},
     {id:"SP",checked:true,label:"SPRING"},
   ];
+
+  export const components=[
+    {id:"DataSlotCheckBox",label:"데이터슬롯"},
+    {id:"DataMethodUseComponent",label:"디렉티브이용"},
+    {id:"ProvideParentComponent",label:"ProvideInject"},
+    {id:"CheckPropChildComponent",label:"CheckProp"}
+  ]
+
+
 // export const member=[{
 
 // }]

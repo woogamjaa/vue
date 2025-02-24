@@ -40,6 +40,9 @@
 
         <h2> slot이용하기</h2>
         <SlotContainer/>
+
+        <h2>다수 컴포넌트 출력하기</h2>
+        <DynamicComponent/>
     </div>
 </template>
 
@@ -57,6 +60,7 @@ import TableBody from './components/sample/TableBody.vue';
 import TableHeader from './components/sample/TableHeader.vue';
 import Navi from './components/sample/Nav.vue';
 import SlotContainer from './components/06_슬룻이용/SlotContainer.vue';
+import DynamicComponent from './components/07_다수컴포넌트/DynamicComponent.vue';
 
 export default{
     //createApp() 함수에 설정했던 내용을 설정
@@ -65,7 +69,7 @@ export default{
     
     //불러온 컴포넌트 등록하기
     //components속성을 이용해서 등록(객체)처리함
-    components:{BasicComponent2,DataMehodUseComponent,ParentComponent,ChildToParent,ProvideParentComponent,TableHeader,TableBody,Navi,SlotContainer},
+    components:{BasicComponent2,DataMehodUseComponent,ParentComponent,ChildToParent,ProvideParentComponent,TableHeader,TableBody,Navi,SlotContainer,DynamicComponent},
     data(){
         return {
             links:[],
