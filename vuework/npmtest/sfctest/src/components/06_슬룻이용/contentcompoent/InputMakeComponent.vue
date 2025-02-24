@@ -5,7 +5,7 @@
     </div>
 </template>
 <script>
-
+import { loginRequuest } from '@/resources/requestAPI';
 
 export default {
     mame:"inputMake",
@@ -19,6 +19,11 @@ export default {
         btntitle:{
             type:String,
             default:"기본버튼"
+        },
+    },
+    methods: {
+        loginRequest(){
+            loginRequuest(this.inputData);
         }
     },
     data(){
@@ -27,7 +32,6 @@ export default {
 
             }
         }
-       
     },
     watch:{
         inputData:{
