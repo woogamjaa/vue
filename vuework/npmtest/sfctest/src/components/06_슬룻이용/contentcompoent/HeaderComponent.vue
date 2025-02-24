@@ -32,7 +32,8 @@ export default {
         return{
             input:[
                 {type:"text", placeholder:"아이디입력" , id:"userId"},
-                {type:"password", placeholder:"비밀번호입력" , id:"password"}
+                {type:"password", placeholder:"비밀번호입력" , id:"password"},
+                {type:"checkbox", placeholder:"" , id:"idsave"}
             ],
         };
     }

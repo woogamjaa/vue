@@ -42,8 +42,16 @@
 
         <LayoutComponent>
             <template v-slot:header>
-                <HeaderComponent/>
+                <HeaderComponent title="나의 slot header" :logo="{src:mylogo,'width':80, 'height':80}"/>
             </template>
+            <template v-slot:aside>
+                <AsideMenuComponent :menu="menu"/>
+            </template>
+
+            <template v-slot:article>
+           
+            </template>
+
         </LayoutComponent>
 
     </div>
@@ -55,13 +63,22 @@ import InputComponent from './03_InputComponent.vue'
 import NamedSlotComponent from './04_NamedSlotComponent.vue'
 import LayoutComponent from './05_LayoutConponent.vue'
 import HeaderComponent from './contentcompoent/HeaderComponent.vue';
+import Mylogo from '@/assets/몽몽몽.png';
+import AsideMenuComponent from './contentcompoent/AsideMenuComponent.vue';
 export default {
     name:"slotcontainer",
-    components:{ChildSlotComponent,ChildSlotComponent2,InputComponent,NamedSlotComponent,LayoutComponent,HeaderComponent},
+    components:{ChildSlotComponent,ChildSlotComponent2,InputComponent,NamedSlotComponent,LayoutComponent,HeaderComponent,AsideMenuComponent},
     data(){
         return{clickCount:0,
             checkData:"check컴포넌트",
             titleList:["운동","코딩","산책","영화","독서"],
+            mylogo:Mylogo,
+            menu:[
+                {title:"방명록",src:"angry.jpg"},
+                {title:"갤러리",src:"babo.png"},
+                {title:"일기이",src:"star.png"},
+                {title:"자료실",src:"hmm.jpg"},
+            ]
         }
     },
     methods:{
