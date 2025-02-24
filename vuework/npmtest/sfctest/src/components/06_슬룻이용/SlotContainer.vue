@@ -74,9 +74,12 @@
                 </template>
             </DataSlotComponent>
 
+            <h3>slot 이용해서 checkbox만들기</h3>
+            <DataSlotCheckBox/>
     </div>
 </template>
 <script>
+import DataSlotCheckBox from './07_DataSlotCheckBox.vue'
 import ChildSlotComponent2 from './02_ChildSlotComponent.vue';
 import ChildSlotComponent from './01_ChildSlotComponent.vue';
 import InputComponent from './03_InputComponent.vue'
@@ -88,7 +91,7 @@ import AsideMenuComponent from './contentcompoent/AsideMenuComponent.vue';
 import DataSlotComponent from './06_DataSlotComponent.vue';
 export default {
     name:"slotcontainer",
-    components:{ChildSlotComponent,ChildSlotComponent2,InputComponent,NamedSlotComponent,LayoutComponent,HeaderComponent,AsideMenuComponent,DataSlotComponent},
+    components:{ChildSlotComponent,ChildSlotComponent2,InputComponent,NamedSlotComponent,LayoutComponent,HeaderComponent,AsideMenuComponent,DataSlotComponent,DataSlotCheckBox},
     data(){
         return{clickCount:0,
             checkData:"check컴포넌트",

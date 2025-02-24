@@ -5,7 +5,14 @@ export const geneatorNum=function* (title){
     }
 }
 
-
+export const items=[
+    {id:"V",checked:true,label:"Vue"},
+    {id:"J",checked:true,label:"Java"},
+    {id:"S",checked:true,label:"SQL"},
+    {id:"H",checked:true,label:"HTML/CSS"},
+    {id:"JS",checked:true,label:"Javascript"},
+    {id:"SP",checked:true,label:"SPRING"},
+  ];
 // export const member=[{
 
 // }]
