@@ -39,6 +39,11 @@
             <InputComponent v-for="t in titleList" :title="t"></InputComponent>
             </template>
         </NamedSlotComponent>
+
+        <LayoutComponent>
+
+        </LayoutComponent>
+
     </div>
 </template>
 <script>
@@ -46,9 +51,10 @@ import ChildSlotComponent2 from './02_ChildSlotComponent.vue';
 import ChildSlotComponent from './01_ChildSlotComponent.vue';
 import InputComponent from './03_InputComponent.vue'
 import NamedSlotComponent from './04_NamedSlotComponent.vue'
+import LayoutComponent from './05_LayoutConponent.vue'
 export default {
     name:"slotcontainer",
-    components:{ChildSlotComponent,ChildSlotComponent2,InputComponent,NamedSlotComponent},
+    components:{ChildSlotComponent,ChildSlotComponent2,InputComponent,NamedSlotComponent,LayoutComponent},
     data(){
         return{clickCount:0,
             checkData:"check컴포넌트",
