@@ -29,6 +29,7 @@ export default {
         height: 80px;
         background-color: lightcoral;
         align-items: center;
+        justify-content: center;
     }
 
     section{

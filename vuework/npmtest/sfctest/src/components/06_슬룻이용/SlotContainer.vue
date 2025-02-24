@@ -36,12 +36,14 @@
                 <p>test1슬롯</p>
             </template> 
             <template v-slot:checkbox>
-            <InputComponent v-for="t in titleList" :title="t"></InputComponent>
+            <InputComponent v-for="t in titleList" :title="t"/>
             </template>
         </NamedSlotComponent>
 
         <LayoutComponent>
-
+            <template v-slot:header>
+                <HeaderComponent/>
+            </template>
         </LayoutComponent>
 
     </div>
@@ -52,9 +54,10 @@ import ChildSlotComponent from './01_ChildSlotComponent.vue';
 import InputComponent from './03_InputComponent.vue'
 import NamedSlotComponent from './04_NamedSlotComponent.vue'
 import LayoutComponent from './05_LayoutConponent.vue'
+import HeaderComponent from './contentcompoent/HeaderComponent.vue';
 export default {
     name:"slotcontainer",
-    components:{ChildSlotComponent,ChildSlotComponent2,InputComponent,NamedSlotComponent,LayoutComponent},
+    components:{ChildSlotComponent,ChildSlotComponent2,InputComponent,NamedSlotComponent,LayoutComponent,HeaderComponent},
     data(){
         return{clickCount:0,
             checkData:"check컴포넌트",
