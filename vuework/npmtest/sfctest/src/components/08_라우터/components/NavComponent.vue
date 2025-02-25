@@ -34,7 +34,8 @@ const model={
     //index.js에 routes:[{path,component,name="이름"}] 
     namedLink:[
         //to속성에 대입되는 값을 객체로 설정
-        {label:"이름으로 연결",link:{name:"namedtest"}}
+        {label:"이름으로 연결",link:{name:"namedtest"}},
+        {label:"props값 이용하기",link:{name:"namedpropstest"}}
     ]
 }
 
