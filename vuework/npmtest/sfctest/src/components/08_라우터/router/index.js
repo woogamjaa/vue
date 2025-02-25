@@ -12,6 +12,7 @@ import NamedPropTestComponent from "../components/namedrouter/NamedPropTestCompo
 import NamedRouterA from "../components/namedrouter/NamedRouterA.vue";
 import NamedDefaultComponent from "../components/namedrouter/NamedDefaultComponent.vue";
 import NamedRouterB from "../components/namedrouter/NamedRouterB.vue";
+import MemberList from "../components/membercomponent/MemberList.vue";
 // export default router=createRouter
 const router=createRouter({
     history:createWebHistory(),
@@ -31,8 +32,10 @@ const router=createRouter({
 
         //라우터주소에 여러 컴포넌트 연결하기
         //components속성을 이용 -> key(이름):value(component) 로 설정
-
-        {path:"/usecomponents", name:"usecomponents",components:{default:NamedDefaultComponent, test:NamedRouterA, test2:NamedRouterB}}
+        {path:"/usecomponents", name:"usecomponents",components:{default:NamedDefaultComponent, test:NamedRouterA, test2:NamedRouterB}},
+        
+        //멤버리스트 컴포넌트
+        {path:"/members" ,component:MemberList},
     ]
 });
 
