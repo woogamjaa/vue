@@ -57,4 +57,20 @@ const router=createRouter({
     ]
 });
 
+//네비게이션 가드 설정하기
+router.beforeEach((to,from)=>{
+    sessionStorage.setItem("token","testeafsadf");
+    console.log("다음라우터",to);
+    console.log("다음라우터",from);
+    const token=sessionStorage.getItem("token");
+    console.log(token);
+    return false;
+});
+
+router.afterEach((to,from,failure)=>{
+    console.log("다음라우터",to);
+    console.log("이전라우터",from);
+    console.log("실패",failure);
+});
+
 export default router; //중괄호 생략 해서 가져옴.  
