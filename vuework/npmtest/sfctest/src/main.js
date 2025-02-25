@@ -1,4 +1,4 @@
-// import { createApp } from 'vue'
+import { createApp } from 'vue'
 
 // //생성한 컴포넌트 불러오기
 // import App from './App.vue';
@@ -9,15 +9,32 @@
 // .mount('#app')
 
 
-//라우터 방식
-import { createApp } from "vue";
-import RouterApp from "./RouterApp.vue";
-import router from "./components/08_라우터/router";
 
-const app=createApp(RouterApp);// 메인이 이걸로 바뀐다.
 
-//라우터 적용하기
+
+
+
+
+
+
+// //라우터 방식
+// import { createApp } from "vue";
+// import RouterApp from "./RouterApp.vue";
+// import router from "./components/08_라우터/router";
+
+// const app=createApp(RouterApp);// 메인이 이걸로 바뀐다.
+
+// //라우터 적용하기
+// app.use(router);
+
+// //마운트 저장 시키기.
+// app.mount("#app");
+
+
+import CompositionAPI from './resources/CompositionAPI.vue';
+import router from '@/components/09_compositionAPI/router';
+
+const app=createApp(CompositionAPI);
 app.use(router);
-
-//마운트 저장 시키기.
 app.mount("#app");
+
