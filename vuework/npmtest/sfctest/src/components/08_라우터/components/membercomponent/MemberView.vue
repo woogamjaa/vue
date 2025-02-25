@@ -8,6 +8,11 @@
                 <h4>포지션 : {{ member.position }}</h4>
                 <h4>팀 : {{ member.team }} </h4>
             </div>
+            <div>
+                <iframe width="100%" height="300" :src="`https://www.youtube.com/embed/${member.video}`"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 </template>

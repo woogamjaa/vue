@@ -13,7 +13,6 @@
                     </td>
                     <td><router-link :to="`/dynamicpath/${v.id}`">{{v.name}}</router-link></td> <!--a 링크랑 똑같음.-->
                     <td>{{v.team}}</td>
-                    
                 </tr>
             </tbody>
         </table>

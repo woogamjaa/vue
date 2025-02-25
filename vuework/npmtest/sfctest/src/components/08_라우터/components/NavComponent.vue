@@ -17,7 +17,37 @@
                 <!-- 이제 a 태그를 사용하면 안댐. - 라우터를 사용하면 a태그가 아닌 라우터링크를 사용. -->
             </li>
         </ul>
+        <h3>함수를 이용해서 컴포넌트 변경하기</h3>
+        <p>
+            this.$router 객체가 제공하는 함수를 이용해서 url를 변경할 수 있음<br>
+            push(), forward(), back(), go(), replace() <br>
+            이벤트와 연동해서 페이지 변경할때 ->동적으로 설정<br>
+        </p>
+        <div class="innercontainer">
+            <div>
+            <h4>버튼으로 이동 : forward, back</h4>
+            <button @click="moveBack()">이전</button>
+            <button @click="moveForward()">다음</button>
+            </div>
+        
+        <div>
+            <h4>히스토리에 저장된 순번으로 이동 : go </h4>
+            <p>일반적으로 -1,1 을 이용해서 이동 </p>
+            <input type="text" v-model="historyNum" size="5">
+            <button @click="moveGo">history이동</button>
+        </div>
+        <div>
+            <h4>원하는 주소로 이동 : push, replace</h4>
+            <p>
+                push : 이동이력을 history남김<br>
+                replace: 이동이력을 htistory에 남기지 않음<br>
+            </p>
+            <select id="path" @change="movePush">
+                <option :value="v.link" v-for="v in [...links,...namedLink]">{{ v.label }}</option>
+            </select>
+        </div>
     </div>
+</div>
 </template>
 <script>
 const model={
@@ -40,13 +70,33 @@ const model={
         //동적경로에 대한 값을 params속성을 이용해서 설정.
         {label:"동적경로 이름으로 연결",link:{name:"nameddynamictest",params:{test:"mylove"},query:{name:"minyoung",value:"love"}}},
         {label:"components속성 이용하기",link:"/usecomponents"},
-    ]
+    ],
+    historyNum:1,
 }
 
 export default {
     name:"NavComponent",
     data(){
         return model;
+    },
+    methods:{
+         moveForward(){
+            this.$router.forward();
+         },
+         moveBack(){
+            this.$router.back();
+         },
+         moveGo(){
+            console.log(window.history);
+            console.log(this.$router.options.history);
+
+            this.$router.go(this.historyNum);
+            
+         },
+         movePush(e){
+            const path=e.target.value;
+            this.$router.push(path);
+         },
     }
 }
 </script>
