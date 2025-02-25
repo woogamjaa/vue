@@ -13,6 +13,8 @@
 
     const nav=[
         {label:"반응성 데이터 활용",path:"/refreactive"},
+        {label:"칼크데이타 활용",path:"/computedwatch"},
+       
     ]
 </script>
 <style>
