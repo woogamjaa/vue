@@ -13,6 +13,7 @@ import NamedRouterA from "../components/namedrouter/NamedRouterA.vue";
 import NamedDefaultComponent from "../components/namedrouter/NamedDefaultComponent.vue";
 import NamedRouterB from "../components/namedrouter/NamedRouterB.vue";
 import MemberList from "../components/membercomponent/MemberList.vue";
+import NotFoundComponent from "../components/errorpage/NotFoundConponent.vue";
 // export default router=createRouter
 const router=createRouter({
     history:createWebHistory(),
@@ -36,6 +37,23 @@ const router=createRouter({
         
         //멤버리스트 컴포넌트
         {path:"/members" ,component:MemberList},
+
+
+        //중첩라우터 설정하기 
+        {path:"/members2",component:MemberList,
+            children:[
+                // /members2/:id
+                {path:":id",component:MemberView},
+                {path:"named",component:NamedComponent},
+                {path:"components", components:{
+                    default:NamedDefaultComponent, test:NamedRouterA, test2:NamedRouterB
+                }}
+            ]
+        },
+
+        //없는 주소로 접근했을때 에러컴포넌트로 연결하기
+        {path:"/:pathMath(.*)*",component:NotFoundComponent}
+
     ]
 });
 

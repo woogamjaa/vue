@@ -47,9 +47,47 @@
             </select>
         </div>
     </div>
+
+    <h3>중첩라우터 적용하기</h3>
+    <p>
+        부모컴포넌트와 자식컴포넌트에 주소를 중복해서 선언할때 사용<br>
+        부모라우터에서 children 속성을 이용해서 자식라우터를 설정<br>
+        자식라우터의 주소는 부모꺼를 생략하고 작성<br>
+        부모 : /members 자식 : /members/:id -> :id
+    </p>
+    <ul>
+        <!-- <li>
+            <router-link to="/members2">회원리스트</router-link>
+        </li>
+        <li>
+            <router-link to="/members2/1">양민혁</router-link>
+        </li> -->
+        <li v-for="(v) in members"> 
+            <router-link :to="`/members2/${v.id}`">{{ v.name }}</router-link>
+        </li>
+        <li>
+            <router-link to="/members2/named">named페이지</router-link>
+        </li>
+        <li>
+            <router-link to="/members2/components">이름으로 라우터연결</router-link>
+        </li>
+    </ul>
+
+    <h3>연결되지 않은 주소요청</h3>
+        <ul>
+            <li v-for="link in extra" :key="link.link">
+                <router-link :to="link.link">
+                    {{ link.label }}
+                </router-link>
+                <!-- 이제 a 태그를 사용하면 안댐. - 라우터를 사용하면 a태그가 아닌 라우터링크를 사용. -->
+            </li>
+        </ul>
+
 </div>
 </template>
 <script>
+import members from "@/resources/member";
+
 const model={
     links:[
         {label:"메인화면",link:"/"},
@@ -72,6 +110,10 @@ const model={
         {label:"components속성 이용하기",link:"/usecomponents"},
     ],
     historyNum:1,
+    members:members,
+    extra:[
+        {label:"등록되지 않은 주소",link:"/11111"}
+    ]
 }
 
 export default {

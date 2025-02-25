@@ -1,21 +1,35 @@
 <template>
-    <div>
-        <h3>선수 목록</h3>
-        <table>
-        <!--  테이블 템플릿을 사용해보자. -->
-            <TableHeader :headers="['id','프로필','이름','팀']"/> 
-            <!-- <TableBody :body="members"/>  이미지 출력을 못함. -->
-            <tbody>
-                <tr v-for="(v,k) in members">
-                    <td>{{ v.id }}</td>
-                    <td>
-                        <img :src="v.profile" alt="프로필" width="100px" height="100">
-                    </td>
-                    <td><router-link :to="`/dynamicpath/${v.id}`">{{v.name}}</router-link></td> <!--a 링크랑 똑같음.-->
-                    <td>{{v.team}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container">
+        <div>
+            <h3>선수 목록</h3>
+                <table>
+                <!--  테이블 템플릿을 사용해보자. -->
+                    <TableHeader :headers="['id','프로필','이름','팀']"/> 
+                    <!-- <TableBody :body="members"/>  이미지 출력을 못함. -->
+                    <tbody>
+                        <tr v-for="(v,k) in members">
+                            <td>{{ v.id }}</td>
+                            <td>
+                                <img :src="v.profile" alt="프로필" width="100px" height="100">
+                            </td>
+                            <td><router-link :to="`/dynamicpath/${v.id}`">{{v.name}}</router-link></td> <!--a 링크랑 똑같음.-->
+                            <td>{{v.team}}</td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+        <div>
+            <h3>자식라우터출력</h3>
+            <router-view></router-view>
+        </div>
+        <div>
+            <h3>test라우터출력</h3>
+            <router-view name="test"></router-view>
+        </div>
+        <div>
+            <h3>test라우터출력</h3>
+            <router-view name="test2"></router-view>
+        </div>
     </div>
 </template>
 <script>
@@ -33,6 +47,10 @@ export default {
 
 }
 </script>
-<style>
+<style scoped>
+    .container{
+        display: flex;
+        justify-content: space-evenly;
+    }
     
 </style>
