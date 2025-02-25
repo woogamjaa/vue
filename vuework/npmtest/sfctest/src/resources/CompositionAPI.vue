@@ -10,7 +10,9 @@
     </div>
 </template>
 <script setup>
-
+    import { provide } from 'vue';
+    provide("provideKey",{"name":"minyoung", value:"love"});
+    
     const nav=[
         {label:"반응성 데이터 활용",path:"/refreactive"},
         {label:"칼크데이타 활용",path:"/computedwatch"},
