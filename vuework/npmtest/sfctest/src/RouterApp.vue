@@ -1,7 +1,8 @@
 <template>
     <div>
         <NavComponent/>
-        <router-view></router-view>
+        <router-view name="test"></router-view>
+        <router-view name="test2"></router-view>
     </div>
 </template>
 <script>

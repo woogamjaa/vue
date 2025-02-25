@@ -38,6 +38,7 @@ const model={
         {label:"props값 이용하기",link:{name:"namedpropstest"}},
         //동적경로에 대한 값을 params속성을 이용해서 설정.
         {label:"동적경로 이름으로 연결",link:{name:"nameddynamictest",params:{test:"mylove"},query:{name:"minyoung",value:"love"}}},
+        {label:"components속성 이용하기",link:"/usecomponents"},
     ]
 }
 
