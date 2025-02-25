@@ -22,7 +22,14 @@ const router=createRouter({
         //라우터에 이름설정하기
         {path:"/namedtest", name:"namedtest", component:NamedComponent},
         //라우터 연결시 컴포넌트에 props전달하기
-        {path:"/namedpropstest",name:"namedpropstest",component:NamedPropTestComponent,props:{test:true,test1:false,data:{name:"bsyoo",value:"love"}}}
+        {path:"/namedpropstest",name:"namedpropstest",component:NamedPropTestComponent,props:{test:true,test1:false,data:{name:"minyoung",value:"love"}}},
+        //named 동적경로 호출하기
+        {path:"/namedpropstest2/:test", name:"nameddynamictest",component:NamedPropTestComponent},
+
+        //라우터주소에 여러 컴포넌트 연결하기
+        //components속성을 이용 -> key(이름):value(component) 로 설정
+        
+        {}
     ]
 });
 

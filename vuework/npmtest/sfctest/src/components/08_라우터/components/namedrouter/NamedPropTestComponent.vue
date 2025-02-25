@@ -5,6 +5,8 @@
         <h3 v-if="test">test가 true, 이거 출력해</h3>
         <h3 v-if="test1">test가 false, 이거 듀 </h3>
         <p>{{data}}</p>
+        <p>{{ this.$route.params }}</p>
+        <p>{{ this.$route.query }}</p>
 
     </div>
 </template>
