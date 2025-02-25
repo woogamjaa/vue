@@ -7,6 +7,7 @@ import RouteinfoComponert from "../components/RouteinfoComponert.vue";
 import RouterInfoComponent from "../RouterInfoComponent.vue";
 import MemberView from "../components/membercomponent/MemberView.vue";
 import QueryStringComponent from "../components/QueryStringComponent.vue";
+import NamedComponent from "../components/namedrouter/NamedComponent.vue";
 // export default router=createRouter
 const router=createRouter({
     history:createWebHistory(),
@@ -16,7 +17,11 @@ const router=createRouter({
         {path:"/route",component:RouteinfoComponert},
         {path:"/router",component:RouterInfoComponent},
         {path:"/dynamicpath/:id",component:MemberView},  //동적인 경로가 되는 것
-        {path:"/querystring", component:QueryStringComponent}
+        {path:"/querystring", component:QueryStringComponent},
+        //라우터에 이름설정하기
+        {path:"/namedtest", name:"namedtest", component:NamedComponent},
+        //라우터 연결시 컴포넌트에 props전달하기
+        {path:"namedpropstest",name:"namedpropstest",component:, props:{test:true,test1:false,data:{name:"bsyoo",value:"love"}}}
     ]
 });
 
