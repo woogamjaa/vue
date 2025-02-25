@@ -43,8 +43,19 @@ export default {
         return {
             members:members
         }
-    }
-
+    },
+    beforeRouteEnter(to,from,next){
+        console.log("컴포넌트엔터 다음",to);
+        console.log("컴포넌트엔터 이전",from);
+        // next(false);
+        // next({path:"/querystring",query:{data:"minyoung",age:3,no:3}});
+        next();
+    },
+    beforeRouteLeave(to,from){
+        console.log("컴포넌트엔터 다음",to);
+        console.log("컴포넌트엔터 이전",from);
+        // next(false);
+    },x
 }
 </script>
 <style scoped>
