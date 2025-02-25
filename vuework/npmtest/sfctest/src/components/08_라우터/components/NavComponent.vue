@@ -18,7 +18,7 @@ const model={
         {label:"router객체정보",link:"/router"},
         {label:"동적경로",link:"/dynamicpath/1"},
         {label:"동적경로1",link:"/dynamicpath/4"}, //아이디에 들어간다.
-    
+        {label:"쿼리스트링값 활용",link:"/querystring?data=bslove&age=19&no=5"}, //아이디에 들어간다.
     ]
 }
 
