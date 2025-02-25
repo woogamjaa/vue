@@ -14,7 +14,8 @@
     const nav=[
         {label:"반응성 데이터 활용",path:"/refreactive"},
         {label:"칼크데이타 활용",path:"/computedwatch"},
-       
+        {label:"라이프사이클이용하기",path:"/lifecycle"},
+        {label:"propsemit이용하기",path:"/propsemit"},
     ]
 </script>
 <style>
