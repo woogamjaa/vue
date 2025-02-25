@@ -16,6 +16,9 @@ const model={
         {label:"메인화면",link:"/"},
         {label:"route객체정보",link:"/route?data=123&number=bslove#1234"},
         {label:"router객체정보",link:"/router"},
+        {label:"동적경로",link:"/dynamicpath/1"},
+        {label:"동적경로1",link:"/dynamicpath/4"}, //아이디에 들어간다.
+    
     ]
 }
 
