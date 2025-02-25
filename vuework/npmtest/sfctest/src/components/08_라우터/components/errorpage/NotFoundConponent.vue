@@ -7,6 +7,11 @@
 <script>
 export default {
     name:"NotFoundComponent",
+    mounted(){
+        setTimeout((router)=>{
+            $router.back();
+        },3000,this.$router);
+    }
 }
 </script>
 <style>
